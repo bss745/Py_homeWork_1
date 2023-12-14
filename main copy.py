@@ -79,3 +79,34 @@ else:
 	print("Incorrect rating!")
 
 print("Hello World")
+
+# ввести з клавіатури 3 числа
+# - вивести найменше з трьох чисел
+
+n1 = int(input("Enter first number: "))
+n2 = int(input("Enter second number: "))
+n3 = int(input("Enter third number: "))
+
+if n1 < n2 < n3:
+	print(n1)
+elif n2 < n3 < n1:
+	print(n2)
+elif n3 < n2 < n1:
+	print(n3)
+else:
+	print("All numbers equal!")
+
+
+# ввести з клавіатури 3 числа
+# - вивести кількість однакових чисел
+
+n1 = int(input("Enter first number: "))
+n2 = int(input("Enter second number: "))
+n3 = int(input("Enter third number: "))
+
+if n1 == n2 == n3:
+	print(3)
+elif n1 == n2 or n2 == n3 or n1 == n3:
+	print(2)
+else:
+	print(0)
