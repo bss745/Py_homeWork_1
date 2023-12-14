@@ -24,3 +24,5 @@ n4 = number % 10
 result = n1 * n2 * n3 * n4
 print(f"n1: {n1} n2: {n2} n3: {n3} n4: {n4}")
 print(f"Result: {result}")
+
+########
