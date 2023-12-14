@@ -54,28 +54,44 @@
 
 ################
 
-hours = int(input("Enter hours: "))
+# hours = int(input("Enter hours: "))
 
-if 12 <= hours < 24:
-	print("PM")
-elif 0 <= hours < 12:
-	print("AM")
-# if hours >= 12 and hours < 24:
+# if 12 <= hours < 24:
 # 	print("PM")
+# elif 0 <= hours < 12:
+# 	print("AM")
+# # if hours >= 12 and hours < 24:
+# # 	print("PM")
+# else:
+# 	print("Incorrect hours!")
+
+# # ввести рейтинг фільму: якщо рейтинг дорівнює 5 або 4 - ок, інакше - погано
+# # 
+# # 
+# film_rating = int(input("Enter film rating: "))
+
+# if film_rating > 0 and film_rating <= 5:
+# 	if film_rating == 4 or film_rating == 5:
+# 		print("Ok!")
+# 	else:
+# 		print("Not OK!")
+# else:
+# 	print("Incorrect rating!")
+
+# print("Hello World")
+
+# ввести з клавіатури 3 числа
+# - вивести найменше з трьох чисел
+
+n1 = int(input("Enter first number: "))
+n2 = int(input("Enter second number: "))
+n3 = int(input("Enter third number: "))
+
+if n1 < n2 < n3:
+	print(n1)
+elif n2 < n3 < n1:
+	print(n2)
+elif n3 < n2 < n1:
+	print(n3)
 else:
-	print("Incorrect hours!")
-
-# ввести рейтинг фільму: якщо рейтинг дорівнює 5 або 4 - ок, інакше - погано
-# 
-# 
-film_rating = int(input("Enter film rating: "))
-
-if film_rating > 0 and film_rating <= 5:
-	if film_rating == 4 or film_rating == 5:
-		print("Ok!")
-	else:
-		print("Not OK!")
-else:
-	print("Incorrect rating!")
-
-print("Hello World")
+	print("All numbers equal!")
