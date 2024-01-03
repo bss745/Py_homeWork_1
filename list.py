@@ -65,7 +65,7 @@
 # numbers.append(22220)
 # print(numbers)
 
-# ### insert(index, item): додає елемент item до списку за індксом index
+# ### insert(index, item): додає елемент item до списку за індексом index
 # numbers.insert(1, 3333)
 # print(numbers)
 
