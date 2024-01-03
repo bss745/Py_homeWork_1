@@ -433,3 +433,11 @@ print(new_password)
 # если юзер ввел неправильную длину - попросить ввести ещё раз
 
 # если юзер ввёл 'q' или 'Q' - выйти из программы
+
+#####
+
+# list
+numbers = []
+numbers_1 = list()
+print(type(numbers))
+print(type(numbers_1))
