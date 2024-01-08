@@ -298,41 +298,95 @@
 
 # print()
 
+# import random
+
+# words = ["Cat", "Apple", "Dog", "Letter", "Helicopter"]
+
+# secret_word = words[random.randint(0, len(words) - 1)]
+
+# print(secret_word)
+
+# user_word = ["_"] * len(secret_word)
+
+# print(user_word)
+# print(" ".join(user_word))
+
+# attempts = 0
+
+# while True:
+# 	if "".join(user_word).find("_") == -1:
+# 		print(f"\nYou guessed the word!\nWord: {secret_word}\nAttempts: {attempts} ")
+# 		break
+
+# 	# if "".join(user_word).lower == secret_word.lower():
+# 	# 	print(f"\nYou guessed the word!\nWord: {secret_word}")
+# 	# 	break
+
+# 	print(" ".join(user_word))
+
+# 	letter = input("Enter letter: ").strip().lower()
+
+# 	if not letter.isalpha() or len(letter) != 1:
+# 		print("Please enter only one letter!")
+# 		continue
+# 		# или вместо print -> raise Exception ("Please enter only one letter!")
+# 		# но нужно добавить обработку исключений в цикле
+# 	attempts += 1
+
+# 	for i in range(len(secret_word)):
+# 		if letter == secret_word[i].lower():
+# 			user_word[i] = letter
+
+#########
 import random
 
-words = ["Cat", "Apple", "Dog", "Letter", "Helicopter"]
+matrix = []
+SIZE = 10
 
-secret_word = words[random.randint(0, len(words) - 1)]
+for i in range(SIZE):
+	matrix.append([])
+	for j in range(SIZE):
+		matrix[i].append(random.randint(10, 99))
 
-print(secret_word)
+for i in range(SIZE):
+	for j in range(SIZE):
+		print(matrix[i][j], end=" ")
+	print()
 
-user_word = ["_"] * len(secret_word)
+####
+matrix_main_diagonal_sum = 0
+print()
 
-print(user_word)
-print(" ".join(user_word))
+for i in range(SIZE):
+	matrix_main_diagonal_sum += matrix[i][i]
+	print(matrix[i][i], end=" ")
 
-attempts = 0
+print()
+print(matrix_main_diagonal_sum)
 
-while True:
-	if "".join(user_word).find("_") == -1:
-		print(f"\nYou guessed the word!\nWord: {secret_word}\nAttempts: {attempts} ")
-		break
+####
+print()
+row_index = 0
+nums = []
+for i in range(SIZE - 1, -1, -1):
+	print(matrix[row_index][i], end=" ")
+	nums.append(matrix[row_index][i])
+	row_index += 1
 
-	# if "".join(user_word).lower == secret_word.lower():
-	# 	print(f"\nYou guessed the word!\nWord: {secret_word}")
-	# 	break
+print(f"\nMin: {min(nums)}\nMax: {max(nums)}")
+print()
 
-	print(" ".join(user_word))
+user_row = int(input("Enter row number: "))
 
-	letter = input("Enter letter: ").strip().lower()
+if user_row > SIZE or user_row <= 0:
+	print("Invalid row number")
 
-	if not letter.isalpha() or len(letter) != 1:
-		print("Please enter only one letter!")
-		continue
-		# или вместо print -> raise Exception ("Please enter only one letter!")
-		# но нужно добавить обработку исключений в цикле
-	attempts += 1
+else:
+	for i in range(SIZE):
+		print(matrix[user_row - 1][i], end=" ")
 
-	for i in range(len(secret_word)):
-		if letter == secret_word[i].lower():
-			user_word[i] = letter
+######
+for i in range(5):
+	for j in range(5):
+		print(i * j, end=" ")
+	print()
