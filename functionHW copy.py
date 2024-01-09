@@ -7,7 +7,16 @@ print("=====Ex. 1=====")
 import random
 
 def create_list_with_rundom_numbers(list_length=10, start_number=1, end_number=10) -> list:
-	return [random.randint(start_number, end_number) for _ in range(list_length)]	
+	return [random.randint(start_number, end_number) for _ in range(list_length)]
+
+# list_lenght = 5
+# start_number = 1
+# end_number = 10
+new_list = list()
+
+# for i in range(list_lenght):
+# 	new_list.append(random.randint(start_number, end_number))
+	
 
 def mult(new_list):
 	dobutok = 1
@@ -16,8 +25,8 @@ def mult(new_list):
 		# return dobutok
 		print(dobutok)
 	return mult		
-print(create_list_with_rundom_numbers)
-print(mult(create_list_with_rundom_numbers))
+print(new_list)
+print(mult(new_list))
 
 # Завдання 2
 
@@ -40,16 +49,22 @@ print(min(new_list))
 
 print("=====Ex. 3=====")
 
-simple_number = []
+
 def find_amount_simple_numbers(new_list) -> int:
+	
 	for number in new_list:
-		if number % 2 == 0:
+		
+		if number % i == 0:
+			simple_number = list()
 			simple_number.append(number)
 			# simple_number += number
-	return simple_number 
+			# print(simple_number)
+			print(len(simple_number))
+			return simple_number 
 
 print(new_list)
-print(len(simple_number))
+# print(simple_number)
+# print(len(simple_number))
 
 # Завдання 4
 
@@ -58,154 +73,40 @@ print(len(simple_number))
 
 print("=====Ex. 4=====")
 
+def remove_number(list_to_remove) -> int:
+	return len(set(list_to_remove))
+
+# Завдання 5
+
+# Напишіть функцію, яка отримує два списки як параметр і повертає список, 
+# що містить елементи обох списків.
+
+print("=====Ex. 5=====")
+
+def create_list_with_rundom_numbers(list_length=10, start_number=1, end_number=10) -> list:
+	return [random.randint(start_number, end_number) for _ in range(list_length)]
+
+numbers_1 = create_list_with_rundom_numbers(start_number=1, end_number=20)
+numbers_2 = create_list_with_rundom_numbers(start_number=1, end_number=20)
+
+print(numbers_1)
+print(numbers_2)
+print(type(numbers_1))
 
 
-# def bigmult(*numbers):    
-#     n = 1
-#     for i in numbers:
-#         n *=i
-#     return n
+def calc_number_of_equal_numbers_v1(nums_1: list[int], nums_2: list[int]) -> list:
+	number = list()
+	print(nums_1.append(nums_2))
+	number = nums_1.append(nums_2)
+	# return number
+	print(type(number))
 
+print(f"Result: {calc_number_of_equal_numbers_v1(numbers_1, numbers_2)}")
 
-# print(bigmult(1, 2, 3))  #Просто для примера, выведет число 6.
-# # def mult(n1, n2):
-# 	return n1 * n2
+# Завдання 6
 
-# def say_hello():
-# 	print("Hello")
+# Напишіть функцію, яка обчислює ступінь кожного елемента списку цілих. 
+# Значення для ступеня передається як параметр, список також передається як параметр. 
+# Функція повертає новий список, який містить отримані результати.
 
-# number = 10
-# print(number)
-# print(say_hello)
-# say_hello() # виклик функції (функція починає працювати)
-# say_hello()
-
-# def say_hello():
-# 	print("Hello friends")
-
-# say_hello()
-
-# def say_hello(name):
-# 	print(f"Hello {name}")
-# 	name = "qqqq"
-# 	# print(f"Hello {name}")
-
-# say_hello("Test user")
-# name = "Anton"
-# say_hello(name)
-# print(name)
-
-# def say_hello_name(username):
-# 	print(f"Hello, {username}")
-
-# say_hello_name("Vasya")
-# name = "Petya"
-# say_hello_name(name)
-
-# def user_info(name: str, age: int, hobby: str) -> None:
-# 	print(f"Welcome, {name}! Your age: {age} and hobby is {hobby}")
-
-# try:
-# 	name = input("Enter your name: ")
-# 	age = int(input("Enter your age: "))
-# 	user_hobby = input("Enter your hobby: ")
-# 	user_info(name, age, user_hobby)
-# except Exception as e:
-# 	print(e)
-
-##############################
-
-#####################
-# після того, як відпрацює ключове слово return - функція припиняє свою роботу (тільки функція)
-# return - поверне результат роботи функції. Після відпрацювання return - решта дій функції не
-# відпрацюють та функція завершить свою роботу. Якщо у функції є цикл - у циклі return працює як
-# break, але на відміну від break поверне результат, а не просто зупинить дії. Якщо у функції є цикли,
-# і в одному із циклів спрацював return - функція припинить свою роботу. Ключове слово return може
-# зустрічатися в тілі функції скільки завгодно разів.
-	
-# def add(n1, n2):
-# 	return n1 + n2
-
-
-# def sub(n1, n2):
-# 	return n1 - n2
-
-
-# def mult(n1, n2):
-# 	return n1 * n2
-
-# def division(n1, n2):
-# 	return n1 / n2
-
-# def calculate() -> None:
-# 	first_number = int(input("Enter first number: "))
-# 	second_number = int(input("Enter second number: "))
-# 	math_operation = input("Enter math operation + - * / ")
-
-# 	match math_operation:
-# 		case "+":
-# 			print(f"{first_number} {math_operation} {second_number} = {add(first_number, second_number)}")
-# 		case "-":
-# 			print(f"{first_number} {math_operation} {second_number} = {sub(first_number, second_number)}")
-# 		case "*":
-# 			print(f"{first_number} {math_operation} {second_number} = {mult(first_number, second_number)}")
-# 		case "/":
-# 			print(f"{first_number} {math_operation} {second_number} = {division(first_number, second_number)}")
-# 		case _:
-# 			raise Exception("Invalid math operation!")
-		
-# try:
-# 	calculate()
-# except ValueError:
-# 	print("Enter valid number!")
-# except ZeroDivisionError:
-# 	print("Do not divide by zero, please!")
-# except Exception as error:
-# 	print(error)
-
-########
-# def user_info(name: str, age: int = 18, hobby: str = "no hobby") -> None:
-# 	print(f"Welcome, {name}! Your age: {age} and hobby is {hobby}")
-
-# user_info("Vasya", 33, "test")
-# user_info("Vasya", 33)
-# user_info("Vasya")
-
-# user_info(hobby="walking", name="Petya", age=33)
-
-#########
-# Усі параметри, які розташовуються праворуч від символа * отримують значення
-# лише за ім'ям
-
-# def print_person(name, *, age, company):
-# 	print(f"Name: {name} Age: {age} Company: {company}")
-
-
-# print_person("Bob", age=41, company="Microsoft")
-
-
-# def print_person(*, name, age, company):
-# 	print(f"Name: {name} Age: {age} Company: {company}")
-
-
-# print_person(name="Mike", age=44, company="Oracle")
-
-# #######
-# # Якщо навпаки треба визначити параметри, яким можна передавати значення лише за позицією
-# # тобто позиційні параметри, можна використовувати символ / (всі параметри які йдуть до символу /, 
-# # є позиційними і можуть отримувати значення лише за позицією)
-# def print_person(name, /, age, company="Microsoft"):
-# 	print(f"Name: {name} Age: {age} Company: {company}")
-
-
-# print_person("Tom", company="JetBrains", age=24)
-# print_person("Ellen", 44)
-
-
-# def print_person(name, /, age=18, *, company):
-# 	print(f"Name: {name} Age: {age} Company: {company}")
-
-
-# print_person("Sam", company="Google")
-# print_person("Jack", 37, company="Apple")
-# print_person("Bryan", company="HP", age=42)
+print("=====Ex. 6=====")

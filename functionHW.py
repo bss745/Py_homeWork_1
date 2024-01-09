@@ -23,7 +23,8 @@ def mult(new_list):
 		print(dobutok)
 	return mult		
 print(new_list)
-print(mult(new_list))
+# print(mult(new_list))
+
 
 # Завдання 2
 
@@ -39,6 +40,14 @@ def find_min_number(new_list) -> int:
 print(min(new_list))
 # print(f"Min: {find_min_number}")
 
+# Проверка 
+def get_min_number(nums: list[int]) -> int:
+	if len(nums) == 0:
+		raise Exception ("Provide non empty list!")
+	
+	return min(nums)
+
+
 # Завдання 3
 
 # Напишіть функцію, яка визначає кількість простих чисел у списку цілих. 
@@ -46,23 +55,44 @@ print(min(new_list))
 
 print("=====Ex. 3=====")
 
-
-def find_amount_simple_numbers(new_list) -> int:
+# def find_amount_simple_numbers(new_list) -> int:
 	
-	for number in new_list:
-		
-		if number % i == 0:
-			simple_number = list()
-			simple_number.append(number)
-			# simple_number += number
-			# print(simple_number)
-			print(len(simple_number))
-			return simple_number 
+# 	for number in new_list:
+# 		# simple_number = []
+# 		if number % 2 == 0:
+# 			simple_number = list()
+# 			simple_number.append(number)
+# 			# simple_number += number
+# 			# print(simple_number)
+# 			print(len(simple_number))
+# 			# return simple_number 
+# 		print(len(simple_number))
+# print(new_list)
+# # print(simple_number)
+# # print(len(simple_number))
 
-print(new_list)
-# print(simple_number)
-# print(len(simple_number))
+numbers = [random.randint(-10, 40) for _ in range(10)]
 
+print(numbers)
+
+def is_simple(number: int) -> bool:
+	if number < 5:
+		return False
+	
+	for num in range(2, number):
+		if number % num == 0:
+			return False
+
+	return True
+
+def get_simple_numbers_from_list(nums: list[int]) -> None:
+	for num in nums:
+		if is_simple(num):
+			print(num, end=" ")
+
+	print()
+
+get_simple_numbers_from_list(numbers)
 # Завдання 4
 
 # Напишіть функцію, яка видаляє зі списку ціле задане число. 
