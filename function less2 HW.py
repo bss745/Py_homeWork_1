@@ -80,3 +80,31 @@ result_position = find_min_sum_position(random_numbers)
 min_sequence = random_numbers[result_position:result_position+10]
 print(f"\nПослідовність з 10 чисел з мінімальною сумою:")
 print(min_sequence)
+
+# v2
+
+import math
+
+def find_min_sum_index(numbers, start_index, end_index, min_sum=math.inf, min_index=0):
+	if end_index < len(numbers):
+		current_sum = sum(numbers[start_index:end_index + 1])
+			
+		if current_sum < min_sum:
+			min_sum = current_sum
+			min_index = start_index
+			
+		start_index += 1
+		end_index += 1
+            
+		print(f"Min sum: {min_sum}, Current sum: {current_sum}, Index: {min_index}")
+            
+		return find_min_sum_index(numbers, start_index, end_index, min_sum, min_index)
+      
+	return min_index
+
+nums = [random.randint(1, 10) for _ in range(10)]
+print(nums)
+result = find_min_sum_index(nums, 0, 1)
+print(result)
+			
+         

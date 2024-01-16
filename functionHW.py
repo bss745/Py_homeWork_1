@@ -100,8 +100,20 @@ get_simple_numbers_from_list(numbers)
 
 print("=====Ex. 4=====")
 
-def remove_number(list_to_remove) -> int:
-	return len(set(list_to_remove))
+def remove_number(numbers: list[int], num_to_delete: int) -> list[int]:
+	new_numbers = []
+	
+	for number in numbers:
+		if number != num_to_delete:
+			new_numbers.append(number)
+
+	return new_numbers
+
+nums = [1, 2, 4, 7, 6, 8, 9, 2, 2, 6, 4, 3]
+print(nums)
+
+result_nums = remove_number(nums, 2)
+print(result_nums)
 
 # Завдання 5
 
@@ -137,3 +149,15 @@ print(f"Result: {calc_number_of_equal_numbers_v1(numbers_1, numbers_2)}")
 # Функція повертає новий список, який містить отримані результати.
 
 print("=====Ex. 6=====")
+
+def numbers_pow(numbers: list[int], power: int) -> list[int]:
+	for i in range(len(numbers)):
+		numbers[i] = numbers[i] ** power
+
+	return numbers
+
+nums = [1, 2, 4, 7, 6, 8, 9, 2, 2, 6, 4, 3]
+print(nums)
+
+result_nums = numbers_pow(nums, 2)
+print(result_nums)
