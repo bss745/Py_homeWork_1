@@ -72,3 +72,12 @@ if validate_full_name(user_full_name):
     print("ПІБ валідний.")
 else:
     print("ПІБ не валідний.")
+
+#########################################
+# додатково :
+
+
+if re.match(r"^.*(?=.{8,16})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$", "Admin123!"):
+    print("OK!")
+else:
+    print("Incorrect Password!")
