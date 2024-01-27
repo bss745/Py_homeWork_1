@@ -27,19 +27,19 @@ class City:
 	def name(self):
 		return self.__name
     
-
 	@name.setter
 	def name(self, new_name):
 		self.__name = new_name
 
+	
 	@property
 	def region(self):
 		return self.__region
 
-
 	@region.setter
 	def region(self, new_region):
 		self.__region = new_region
+
 
 	@property
 	def country(self):
@@ -49,6 +49,7 @@ class City:
 	def country(self, new_country):
 		self.__country = new_country
 
+
 	@property 
 	def population(self):
 		return self.__population
@@ -57,6 +58,7 @@ class City:
 	def population(self, new_population):
 		self.__population = new_population
 
+
 	@property
 	def postal_code(self):
 		return self.__postal_code
@@ -64,6 +66,7 @@ class City:
 	@postal_code.setter
 	def postal_code(self, new_postal_code):
 		self.__postal_code = new_postal_code
+
 
 	@property
 	def phone_code(self):
@@ -126,6 +129,7 @@ class Country:
 	def set_name(self, new_name):
 		self.__name = new_name
 
+	
 	@property
 	def continent(self):
 		return self.__continent
@@ -134,6 +138,7 @@ class Country:
 	def continent(self, new_continent):
 		self.__continent = new_continent
 
+	
 	@property
 	def population(self):
 		return self.__population
@@ -142,15 +147,16 @@ class Country:
 	def population(self, new_population):
 		self.__population = new_population
 
+	
 	@property
 	def phone_code(self):
 		return self.__phone_code
-
 
 	@phone_code.setter
 	def phone_code(self, new_phone_code):
 		self.__phone_code = new_phone_code
 
+	
 	@property
 	def capital(self):
 		return self.__capital
@@ -159,10 +165,10 @@ class Country:
 	def capital(self, new_capital):
 		self.__capital = new_capital
 
+	
 	@property
 	def cities(self):
 		return self.__cities
-
 
 	@cities.setter
 	def cities(self, new_cities):

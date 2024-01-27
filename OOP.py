@@ -217,14 +217,76 @@
 
 
 ########################
+# class Person:
+# 	__name = "no name"
+# 	__age = 18
+
+# 	def __init__(self, name, age, hobby):
+# 		self.name = name # name setter
+# 		self.age = age	# age setter
+# 		self.hobby = hobby	# public field
+	
+# 	@property
+# 	def name(self):
+# 		return self.__name
+	
+# 	@name.setter
+# 	def name(self, name):
+# 		if 2 < len(name) < 30:
+# 			self.__name = name
+
+# 	@property
+# 	def age(self):
+# 		return self.__age
+	
+# 	@age.setter
+# 	def age(self, age):
+# 		if 0 < age < 150:
+# 			self.__age = age
+
+# 	def show_info(self):
+# 		print(f"Name: {self.__name}\nAge: {self.__age}\nHobby: {self.hobby}")
+
+
+# class Company:
+# 	__name = "no company name"
+
+# 	def __init__(self, company_name: str, users: list[Person] = None):
+# 		self.__name = company_name # дописать инкапсуляции проверки get и set
+# 		self.users = users
+
+# 	def show_users(self):
+# 		print(f"Found {len(self.users)} users")
+# 		for user in self.users:
+# 			user.show_info()
+# 			print()
+
+# 	def add_user(self, user: Person):
+# 		if isinstance(user, Person):
+# 			self.users.append(user)
+# 			return
+# 		raise Exception(f"Provided value with incorrect type for user: {type(user)}")
+	
+# try:
+# 	users: list[Person] = [Person("John", 33, "soccer"), Person("David", 36, "soccer"), Person("Julia", 25, "camping")]
+# 	google = Company("Google", users)
+# 	google.show_users()
+# 	google.add_user(Person("Craig", 55, "coach"))
+# 	google.show_users()
+# except Exception as error:
+# 	print(error)
+
+#######################
+# успадкування 
 class Person:
 	__name = "no name"
 	__age = 18
 
-	def __init__(self, name, age, hobby):
+	def __init__(self, name, age):
 		self.name = name # name setter
 		self.age = age	# age setter
-		self.hobby = hobby	# public field
+		self.__secret = 12345 # (private) -> доступ тільки всередині класу
+		self._hobby = "no info"	# (protected) -> доступ всередині класу та в класах спадкоємцах
 	
 	@property
 	def name(self):
@@ -232,7 +294,7 @@ class Person:
 	
 	@name.setter
 	def name(self, name):
-		if 2 < len(name) < 30:
+		if len(name) > 2:
 			self.__name = name
 
 	@property
@@ -241,37 +303,186 @@ class Person:
 	
 	@age.setter
 	def age(self, age):
-		if 0 < age < 150:
+		if age > 18:
 			self.__age = age
 
-	def show_info(self):
-		print(f"Name: {self.__name}\nAge: {self.__age}\nHobby: {self.hobby}")
-
-
-class Company:
-	__name = "no company name"
-
-	def __init__(self, company_name: str, users: list[Person] = None):
-		self.__name = company_name # дописать инкапсуляции проверки get и set
-		self.users = users
-
-	def show_users(self):
-		print(f"Found {len(self.users)} users")
-		for user in self.users:
-			user.show_info()
-			print()
-
-	def add_user(self, user: Person):
-		if isinstance(user, Person):
-			self.users.append(user)
-			return
-		raise Exception(f"Provided value with incorrect type for user: {type(user)}")
+	@property
+	def hobby(self):
+		return self._hobby
 	
-try:
-	users: list[Person] = [Person("John", 33, "soccer"), Person("David", 36, "soccer"), Person("Julia", 25, "camping")]
-	google = Company("Google", users)
-	google.show_users()
-	google.add_user(Person("Craig", 55, "coach"))
-	google.show_users()
-except Exception as error:
-	print(error)
+	def show_info(self):
+		print(f"Name: {self.name}, Age: {self.age}")
+
+# # v1
+# # class Employee(Person): # успадковуємось від класу Person
+# # 	def work(self):
+# # 		print(f"{self.name} works!")
+# # 		# print(self.__secret) #AttributeError: 'Employee' object has no attribute 'Employee.__secret'
+# # 		# print(self.hobby) # є доступ так як у базовому класі це поле protected
+
+# # vasya = Employee("Vasya", 33)
+# # vasya.show_info()
+# # vasya.work()
+
+# # print(vasya._hobby) # до protected полів не варто звертатись безпосередньо, краще використовувати getter
+# # print(vasya.hobby)
+# # print(vasya.__dict__)
+
+# # v2
+# class Employee(Person):
+# 	def __init__(self, name, age, company):
+# 		# v1
+# 		super().__init__(name, age) # виклик конструктора базового класу Person
+# 		# super() -> посилання на базовий клас, отримуємо доступ до елементів базового класу
+# 		# v2
+# 		# Person.__init__(self, name, age)
+# 		self.company = company
+
+# 	# def work(self):
+# 	# 	print(f"{self.name} works!")
+# 	# 	# print(self.__secret) #AttributeError: 'Employee' object has no attribute 'Employee.__secret'
+# 	# 	# print(self.hobby) # є доступ так як у базовому класі це поле protected
+
+# 	# перевизначення методу
+# 	def show_info(self):
+# 		super().show_info() # виклик з методу базового класу
+# 		print(f"Works in {self.company} company")
+
+# vasya = Employee("Vasya", 33, "Google")
+# vasya.show_info()
+# # vasya.work()
+
+# # print(vasya._hobby) # до protected полів не варто звертатись безпосередньо, краще використовувати getter
+# # print(vasya.hobby)
+# print(vasya.__dict__)
+
+
+############################################
+
+# class Employee:
+# 	def __init__(self, name):
+# 		self.name = name
+
+# 	def work(self):
+# 		print(f"{self.name} works!")
+
+# class Student:
+# 	def __init__(self, name):
+# 		self.name = name
+
+# 	def study(self):
+# 		print(f"{self.name} studies!")
+
+# class WorkingStudent(Student, Employee): # множинне спадкування
+# 	pass
+
+# vasya = WorkingStudent("Vasya")
+# vasya.work()
+# vasya.study()
+# print(WorkingStudent.mro())
+
+# [<class '__main__.WorkingStudent'>, <class '__main__.Student'>, <class '__main__.Employee'>, <class 'object'>]
+
+# v4 приклад ромбовидного наслідування
+# class Person:
+# 	def __init__(self, name, age):
+# 		self.name = name
+# 		self.age = age
+
+# 	def show_info(self):
+# 		print(f"Name: {self.name}\nAge: {self.age}")
+
+# class Employee(Person):
+# 	def __init__(self, name, age, company = None):
+# 		super().__init__(name, age)
+# 		self.company = company
+
+# 	def show_info(self):
+# 		super().show_info()
+# 		print(f"Company: {self.company}")
+
+# class Student(Person):
+# 	def __init__(self, name, age, university=None):
+# 		super().__init__(name, age)
+# 		self.university = university	
+
+# 	def show_info(self):
+# 		super().show_info()
+# 		print(f"University: {self.university}")
+
+# class WorkingStudent(Student, Employee):
+# 	def __init__(self, name, age, company, university):
+# 		Student.__init__(self, name, age, university)
+# 		Employee.__init__(self, name, age, company)
+
+# 	def show_info(self):
+# 		super().show_info()
+# 		# Student.show_info(self)
+# 		# Employee.show_info(self)
+
+# vasya = WorkingStudent("Vasya", 33, "Google", "Tech")
+# vasya.show_info()
+# # print(vasya.company)
+# # print(vasya.university)
+# print(WorkingStudent.mro())
+
+# [<class '__main__.WorkingStudent'>, <class '__main__.Student'>, <class '__main__.Employee'>, <class 'object'>]
+
+##########################
+# https://makina-corpus.com/python/python-tutorial-understanding-python-mro-class-search-path
+# http://www.srikathtechnologies.com/blog/python/mro.aspx
+
+####
+class Transport:
+	def __init__(self, name, year):
+		self.name = name
+		self.year = year
+
+	def show_info(self):
+		print(f"Name: {self.name}\nYear: {self.year}")
+
+
+class BaseAuto(Transport):
+	def __init__(self, name, year, wheels_count=0):
+		super().__init__(name, year)
+		self.wheels_count = wheels_count
+
+	# перекриття метода базового класу
+	def show_info(self):
+		print(f"Wheels count: {self.wheels_count}")
+
+class WaterTransport(Transport):
+	def __init__(self, name, year, displacement=0.):
+		super().__init__(name, year)
+		self.displacement = displacement
+
+	# перекриття метода базового класу
+	def show_info(self):
+		print(f"Displacement: {self.displacement}")
+
+
+class Car(BaseAuto):
+	def __init__(self, name, year, wheels_count, doors_count=0):
+		super().__init__(name, year, wheels_count)
+		self.doors_count = doors_count
+
+	# перекриття метода базового класу
+	def show_info(self):
+		print(f"Doors count: {self.doors_count}")
+
+
+class Amphibian(WaterTransport, BaseAuto):
+	def __init__(self, name, year, wheels_count, displacement):
+		WaterTransport.__init__(self, name, year, displacement)
+		BaseAuto.__init__(self, name, year, wheels_count)
+
+	# перекриття метода базового класу
+	def show_info(self):
+		Transport.show_info(self)
+		WaterTransport.show_info(self)
+		BaseAuto.show_info(self)
+
+
+test_car = Amphibian("BMW", 2024, 4, 123.6)
+test_car.show_info()
+print(Amphibian.mro())
